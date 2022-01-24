@@ -17,7 +17,6 @@
 <div class="container">
     <h1>Product Add</h1>
     <hr>
-    <!--<a href="productadd.php" target="_blank" class="addbutton" type="button" >ADD</a>-->
     <form id="product_form" class="product" action="product-list.php" method="POST">
        
         <label for="sku" class="fontSize">SKU</label> <input type="text" name="sku" id="sku" placeholder="xxxxx-xxxxxx-xxx" pattern="[a-z]{5}-[a-z]{6}-[a-z]{3}" required/></br>
