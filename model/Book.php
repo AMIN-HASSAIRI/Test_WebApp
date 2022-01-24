@@ -6,10 +6,10 @@ include_once "product.php";
 class Book extends Product{
     private $weight;
 
-    public function __construct($sku, $name, $price, $productType, $weight)
+    public function __construct( $id , $sku, $name, $price, $productType, $weight)
     {
         $this->weight = $weight;
-        parent::__construct($sku,$name,$price,$productType);
+        parent::__construct($id,$sku,$name,$price,$productType);
     }
     public function getSizeWeightDimensions()
     {

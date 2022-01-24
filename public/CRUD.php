@@ -14,21 +14,23 @@
         }
         
         public function getProducts(){
-            return $this->products;
+            usort($this->products, fn($x, $y) => $x->getId() <=> $y->getId());
+            return $this->products; 
         }
 
         public function listProductsFromDb($conn){
+
             $Book = $conn->query("SELECT * FROM products Where pType = 'Book'")->fetchAll();
             foreach ($Book as $row) {
-                $this->products[] = new Book($row['pSku'], $row['pName'], $row['pPrice'],'Book', $row['pWeight']);
+                $this->products[] = new Book($row['id'],$row['pSku'], $row['pName'], $row['pPrice'],'Book', $row['pWeight']);
             }    
             $DVD = $conn->query("SELECT * FROM products Where pType = 'DVD'")->fetchAll();
             foreach ($DVD as $row) {
-                $this->products[] = new DVD_disk($row['pSku'], $row['pName'], $row['pPrice'],'DVD', $row['pSize']);
+                $this->products[] = new DVD_disk($row['id'],$row['pSku'], $row['pName'], $row['pPrice'],'DVD', $row['pSize']);
             }  
             $Furniture = $conn->query("SELECT * FROM products Where pType = 'Furniture'")->fetchAll();
             foreach ($Furniture as $row) {
-                $this->products[] = new Furniture($row['pSku'], $row['pName'], $row['pPrice'],'Furniture', $row['pHeight'], $row['pWidth'], $row['pLength']);
+                $this->products[] = new Furniture($row['id'],$row['pSku'], $row['pName'], $row['pPrice'],'Furniture', $row['pHeight'], $row['pWidth'], $row['pLength']);
             }
         }
         public function deleteProducts($skuDeleteList, $conn)  

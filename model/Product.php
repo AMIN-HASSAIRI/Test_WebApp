@@ -5,17 +5,22 @@
 <?php
 
 abstract class Product{
+    protected $id;
     protected $sku;
     protected $name;
     protected $price;
     protected $productType;
 
-    public function __construct($sku, $name, $price, $productType)
+    public function __construct($id, $sku, $name, $price, $productType)
     {
+        $this->id = $id;
         $this->sku = $sku;
         $this->name = $name;
         $this->price = $price;
         $this->productType = $productType;
+    }
+    public function getId(){
+        return $this->id;
     }
     public function setSku($sku){
         $this->$sku= $sku;

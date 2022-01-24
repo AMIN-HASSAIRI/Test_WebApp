@@ -34,73 +34,39 @@
     $db = new Database();
     $pro = $db->listProductsFromDb($conn); 
 
-        //POST REQUEST FOR SAVING
-        if(ISSET($_POST['save'])){
+    //POST REQUEST FOR SAVING
+    if(ISSET($_POST['save'])){
 
-            $sku =  $_POST['sku'];
-            $name = $_POST['name'];
-            $price =  $_POST['price'];
-            $productType = $_POST['productType'];
-            $size = empty($_POST['size']) ? 0 : $_POST['size'];
-            $weight = empty($_POST['weight']) ? 0 : $_POST['weight'];
-            $height = empty($_POST['height']) ? 0 : $_POST['height'];
-            $width = empty($_POST['width']) ? 0 : $_POST['width'];
-            $length = empty($_POST['length']) ? 0 : $_POST['length'];
+        $sku =  $_POST['sku'];
+        $name = $_POST['name'];
+        $price =  $_POST['price'];
+        $productType = $_POST['productType'];
+        $size = empty($_POST['size']) ? 0 : $_POST['size'];
+        $weight = empty($_POST['weight']) ? 0 : $_POST['weight'];
+        $height = empty($_POST['height']) ? 0 : $_POST['height'];
+        $width = empty($_POST['width']) ? 0 : $_POST['width'];
+        $length = empty($_POST['length']) ? 0 : $_POST['length'];
             
-            $missingData = true;
-            if($productType == 'DVD'){
-                if(empty($size)){
-					$missingData = false; 
-					echo "<div style='color:red;'>Missing required data</div>";
-				}
-                else{
-                $newProduct = new DVD_disk($sku,$name,$price,$productType,$size);
-                $db->addProduct($newProduct);
-                }
-
-            }
-            elseif($productType == 'Book'){
-                if(empty($weight)){
-					$missingData = false; 
-					echo "<div style='color:red;'>Missing required data</div>";
-				}
-                else{
-                $newProduct = new Book($sku,$name,$price,$productType,$weight);
-                $db->addProduct($newProduct);
-                }
-            }
-            elseif($productType == 'Furniture'){
-                if(empty($height) || empty($width) || empty($length)){
-					$missingData = false; 
-					echo "<div style='color:red;'>Missing required data</div>";
-				}
-                else{
-                $newProduct = new Furniture($sku,$name,$price,$productType,$height,$width,$length);
-                $db->addProduct($newProduct);
-                }
-            }
-            if($missingData){
-                $sql = "INSERT INTO `products` (`pSku`, `pName`, `pPrice`, `pType`, `pSize`, `pWeight`, `pHeight`, `pWidth`, `pLength`)
+        $sql = "INSERT INTO `products` (`pSku`, `pName`, `pPrice`, `pType`, `pSize`, `pWeight`, `pHeight`, `pWidth`, `pLength`)
                     values (:sku,:name,:price,:productType,:size,:weight,:height,:width,:length)";
-                $stmt = $conn->prepare($sql); 
+        $stmt = $conn->prepare($sql); 
         
-                $stmt->bindParam(':sku',$sku);
-                $stmt->bindParam(':name',$name);
-                $stmt->bindParam(':price',$price);
-                $stmt->bindParam(':productType',$productType);
-                $stmt->bindParam(':size',$size);
-                $stmt->bindParam(':weight',$weight);
-                $stmt->bindParam(':height',$height);
-                $stmt->bindParam(':width',$width);
-                $stmt->bindParam(':length',$length);
+        $stmt->bindParam(':sku',$sku);
+        $stmt->bindParam(':name',$name);
+        $stmt->bindParam(':price',$price);
+        $stmt->bindParam(':productType',$productType);
+        $stmt->bindParam(':size',$size);
+        $stmt->bindParam(':weight',$weight);
+        $stmt->bindParam(':height',$height);
+        $stmt->bindParam(':width',$width);
+        $stmt->bindParam(':length',$length);
     
-                $stmt->execute();
+        $stmt->execute();
     
-                header('Location: index.php');
+        header('Location: index.php');
     
-                $conn=null;
-            }
-        }
+        $conn=null;            
+    }
 ?>
 <form id="delete-form" action="" method="POST">
 <div class="container" >
