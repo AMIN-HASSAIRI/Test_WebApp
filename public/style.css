@@ -1,0 +1,89 @@
+.addbutton{
+    top:3%;
+    left:55%;
+    width:110px;
+    height:40px;
+    position: absolute;
+    z-index: 2;
+    background: rgb(188, 236, 188); 
+}
+.massdeletebutton{
+    top:3%;
+    left:65%;
+    width:110px;
+    height:40px;
+    position: absolute;
+    z-index: 2;
+    background: rgb(253, 233, 233); 
+}
+.savebutton{
+    top:3%;
+    left:55%;
+    width:110px;
+    height:40px;
+    position: absolute;
+    z-index: 2;
+    background: rgb(188, 236, 188); 
+}
+.cancelbutton{
+    top:3%;
+    left:65%;
+    width:110px;
+    height:40px;
+    position: absolute;
+    z-index: 2;
+    background: rgb(253, 233, 233); 
+}
+.hide {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.box{
+    color: #fff;
+    padding: 20px;
+    display: none;
+    margin-top: 20px;
+}
+.red{ 
+      background: #ff0000; 
+}
+.green{ 
+    background: #228B22; 
+}
+.blue{ 
+    background: #0000ff; 
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background:salmon;
+    color: white;
+    text-align: center;
+}
+input[type=text], select {
+    width: 20%;
+    padding: 6px 5px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input[type=number], select {
+    width: 20%;
+    padding: 6px 5px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .product label{
+    font-size: 22px;
+  }
+  .product h6{
+    font-size: 13px;
+  }
