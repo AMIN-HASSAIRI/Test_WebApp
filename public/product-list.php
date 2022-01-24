@@ -63,7 +63,7 @@
     
         $stmt->execute();
     
-        header('Location: index.php');
+        header('Location: ../index.php');
     
         $conn=null;            
     }
@@ -97,7 +97,7 @@
 	    $_POST = array();
 	    $_POST['delete-checkbox'] = NULL;
         ?>
-        <script> location.href = "index.php"</script>
+        <script> location.href = "../index.php"</script>
         <?php
 	}
 ?>

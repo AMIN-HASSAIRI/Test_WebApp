@@ -54,7 +54,7 @@
         <button type="submit" name="save" class="savebutton" value="Save">Save</button>
     </form>
 </div>    
-<form action="index.php">
+<form action="../index.php">
         <input type="submit" class="cancelbutton" value="Cancel"/>
 </form>
 
