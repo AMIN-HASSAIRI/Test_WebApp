@@ -18,15 +18,17 @@
         }
 
         public function listProductsFromDb($conn){
-            $data = $conn->query("SELECT * FROM products")->fetchAll();
-            foreach ($data as $row) {
-                $productType = $row['pType'];
-            if($productType == 'Book')
-                $this->products[] = new Book($row['pSku'], $row['pName'], $row['pPrice'], $productType, $row['pWeight']);
-            elseif ($productType == 'DVD')
-                $this->products[] = new DVD_disk($row['pSku'], $row['pName'], $row['pPrice'], $productType, $row['pSize']);
-            elseif ($productType == 'Furniture')
-                $this->products[] = new Furniture($row['pSku'], $row['pName'], $row['pPrice'], $productType, $row['pHeight'], $row['pWidth'], $row['pLength']);
+            $Book = $conn->query("SELECT * FROM products Where pType = 'Book'")->fetchAll();
+            foreach ($Book as $row) {
+                $this->products[] = new Book($row['pSku'], $row['pName'], $row['pPrice'],'Book', $row['pWeight']);
+            }    
+            $DVD = $conn->query("SELECT * FROM products Where pType = 'DVD'")->fetchAll();
+            foreach ($DVD as $row) {
+                $this->products[] = new DVD_disk($row['pSku'], $row['pName'], $row['pPrice'],'DVD', $row['pSize']);
+            }  
+            $Furniture = $conn->query("SELECT * FROM products Where pType = 'Furniture'")->fetchAll();
+            foreach ($Furniture as $row) {
+                $this->products[] = new Furniture($row['pSku'], $row['pName'], $row['pPrice'],'Furniture', $row['pHeight'], $row['pWidth'], $row['pLength']);
             }
         }
         public function deleteProducts($skuDeleteList, $conn)  
