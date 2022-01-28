@@ -17,7 +17,7 @@
 <div class="container">
     <h1>Product Add</h1>
     <hr>
-    <form id="product_form" class="product" action="product-list.php" method="POST">
+    <form id="product_form" class="product" action="../controller/addProductToDb.php" method="POST">
        
         <label for="sku" class="fontSize">SKU</label> <input type="text" name="sku" id="sku" placeholder="xxxxx-xxxxxx-xxx" pattern="[a-z]{5}-[a-z]{6}-[a-z]{3}" required/></br>
         <label for="name">Name</label> <input type="text" name="name" id="name" placeholder="name" required/></br>
@@ -54,7 +54,7 @@
         <button type="submit" name="save" class="savebutton" value="Save">Save</button>
     </form>
 </div>    
-<form action="../index.php">
+<form action="../public/product-list.php">
         <input type="submit" class="cancelbutton" value="Cancel"/>
 </form>
 
